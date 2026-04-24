@@ -1,4 +1,4 @@
-# Overview: AK (Anna & Kat) Paint
+## Overview: AK (Anna & Kat) Paint
 Using HTML Canvas, I will create a basic drawing app with different tools. The minimum viable product is a working canvas with a brush and eraser. 
 Will aim to implement features such as brush size, color, and type.
 
