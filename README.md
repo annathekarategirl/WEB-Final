@@ -7,7 +7,7 @@ Inspiration KidPix
 ## If Statements and Loops 
 Make presets to loop and make pattern tools- like making a tile background by looping through it.
 If you name your artwork my secret code, something special will happen 🦐🍤
-Everything has if statements just trust me bro
+Logic is required in the majority of programs, such as this one.
 
 ## Event Listeners 
 Will listen for pendown vs penup. Will listen for clicks on buttons created in the DOM.
