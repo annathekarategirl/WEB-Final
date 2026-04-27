@@ -27,11 +27,12 @@ const ctx = canvas.getContext("2d");
 
 ctx.fillStyle = "black";
 
-ctx.fillRect(100, 100, 10, 10);
-
 //event listener for mouse down and funciton draw adds event listener for mouse move then mouse up removes event listener
 function drawing() {
     console.log("works")
+    let x = event.clientX;
+        let y = event.clientY;
+    ctx.fillRect(x, y, 10, 10);
 }
 
 
