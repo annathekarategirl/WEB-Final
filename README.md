@@ -20,6 +20,7 @@ What if I pull an Eris and have an empty html file and just make every single th
 
 ## Classes and Subclasses 
 Abstract tool class\
+Make a list of all objects and have a property of the html element like in BFS and display it all on the same toolbar div
 Brush subclass-- allow for different brush sizes and potentially textures\
 Eraser subclass\
 Preset subclasses\
