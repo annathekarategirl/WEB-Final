@@ -39,7 +39,8 @@ function mouseDownDraw(){
     console.log("yay")
     canvas.addEventListener("mousemove",drawing)
 
-    canvas.addEventListener("mouseup",function(){canvas.removeEventListener("mousemove")})
+    canvas.addEventListener("mouseup",function(){canvas.removeEventListener("mousemove",drawing)})
+    canvas.addEventListener("mouseleave",function(){canvas.removeEventListener("mousemove",drawing)})
 }
 
 canvas.addEventListener("mousedown",mouseDownDraw)
