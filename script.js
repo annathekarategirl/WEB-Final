@@ -25,6 +25,8 @@ var e = window.event;
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const sizeInput=document.getElementById("sizeInput")
+const toolbar=document.getElementById("toolbar")
+const brushbar=document.getElementById("brushbar")
 let isDrawing=false
 
 ctx.fillStyle = "black";
@@ -70,12 +72,16 @@ class Tool{
 let ultimateTool=new Tool()
 
 class Brush extends Tool{
-    constructor(brushSize,color){
-        super(brushSize,color)
+    constructor(brushSize,color,htmlelement){
+        super(brushSize,color,htmlelement)
+        let brush=document.createElement("button")
+        brush.textContent=htmlelement
+        brushbar.appendChild(brush)
+        brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush)})
     }
 }
 
-let defaultBrush=new Brush(10,"black")
+let defaultBrush=new Brush(10,"black","Default")
 defaultBrush.changeBrushSize()
 let currentBrush=defaultBrush
 
