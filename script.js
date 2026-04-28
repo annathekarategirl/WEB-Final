@@ -27,6 +27,9 @@ const ctx = canvas.getContext("2d");
 const sizeInput=document.getElementById("sizeInput")
 const toolbar=document.getElementById("toolbar")
 const brushbar=document.getElementById("brushbar")
+const colorInput=document.getElementById("colorinput")
+const qem1=document.getElementById("qem1")
+const qem2=document.getElementById("qem2")
 let isDrawing=false
 
 ctx.fillStyle = "black";
@@ -50,11 +53,16 @@ class Tool{
         console.log(this.brushSize)
     }
 
+    changeColor(){
+        this.color=colorInput.value
+    }
+
     drawing(event) {
         if (isDrawing){
         console.log("works")
         let x = event.clientX;
         let y = event.clientY;
+        ctx.fillStyle=this.color
         ctx.fillRect(x, y, this.brushSize, this.brushSize);
         }
     }
@@ -91,3 +99,6 @@ canvas.addEventListener("mouseup",function(){isDrawing=false})
 canvas.addEventListener("mouseleave",function(){isDrawing=false})
 //canvas.addEventListener("mousedown",(ev) => {currentBrush.mouseDownDraw(ev)})
 sizeInput.addEventListener("change",(ev) => {currentBrush.changeBrushSize(ev)})
+colorInput.addEventListener("change",() => {currentBrush.changeColor()})
+qem1.addEventListener("click",function(){window.alert('Input either HTML supported color names or Hex codes! \nFeel free to utilize the preset colors at the bottom.')})
+qem2.addEventListener("click",function(){window.alert('The numbers are based on pixels, so a size 10 brush is 10 pixels wide and 10 pixels tall.')})
