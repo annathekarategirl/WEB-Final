@@ -2,6 +2,7 @@
 Learning sources
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
 https://www.geeksforgeeks.org/javascript/javascript-coordinates-of-mouse/
+https://www.codegenes.net/blog/get-the-mouse-coordinates-when-clicking-on-canvas/
 https://www.w3schools.com/html/html5_canvas.asp#:~:text=Learn%20how%20to%20draw%20graphics%20on%20a%20web%20page
 */
 /*
@@ -60,8 +61,9 @@ class Tool{
     drawing(event) {
         if (isDrawing){
         console.log("works")
-        let x = event.clientX;
-        let y = event.clientY;
+        const rect = canvas.getBoundingClientRect();
+        let x = event.clientX-rect.left;
+        let y = event.clientY-rect.top;
         ctx.fillStyle=this.color
         ctx.fillRect(x, y, this.brushSize, this.brushSize);
         }
