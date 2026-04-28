@@ -38,16 +38,16 @@ ctx.fillStyle = "black";
 
 //event listener for mouse down and funciton draw adds event listener for mouse move then mouse up removes event listener
 
-
+//figure out how to linecap
 
 class Tool{
     //Abstract not really tho
-    constructor(brushSize,color,htmlelement){
+    constructor(brushSize,color,htmlelement,linecap){
         this.array=[]
         this.brushSize=brushSize
         this.color=color
         this.htmlelement=htmlelement
-
+        this.linecap=linecap
     }
     
     changeBrushSize() {
@@ -87,18 +87,21 @@ class Tool{
 let ultimateTool=new Tool()
 
 class Brush extends Tool{
-    constructor(brushSize,color,htmlelement){
-        super(brushSize,color,htmlelement)
+    constructor(brushSize,color,htmlelement,linecap){
+        super(brushSize,color,htmlelement,linecap)
         let brush=document.createElement("button")
         brush.textContent=htmlelement
         brushbar.appendChild(brush)
         brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush)})
+        ctx.lineCap=linecap
     }
 }
 
-let defaultBrush=new Brush(10,"black","Default")
-defaultBrush.changeBrushSize()
+let defaultBrush=new Brush(10,"black","Default","square")
 let currentBrush=defaultBrush
+
+let roundBrush= new Brush(currentBrush.brushSize,currentBrush.color,"Round","round")
+defaultBrush.changeBrushSize()
 
 function mouseLeaveUp(){
     isDrawing=false;
