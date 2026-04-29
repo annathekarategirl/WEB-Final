@@ -134,6 +134,11 @@ function mouseLeaveUp(){
     ctx.closePath()
 }
 
+let clearButton= document.createElement("button")
+clearButton.textContent="Clear"
+toolbar.appendChild(clearButton)
+clearButton.addEventListener("click",function(){ctx.clearRect(0, 0, canvas.width, canvas.height);})
+
 
 canvas.addEventListener("mousemove",(event) => {currentBrush.drawing(event)})
 canvas.addEventListener("mousedown",function(event){isDrawing=true;ctx.beginPath();ctx.moveTo(event.clientX-canvas.getBoundingClientRect().left,event.clientY-canvas.getBoundingClientRect().top)})
