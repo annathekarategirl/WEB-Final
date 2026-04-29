@@ -35,6 +35,7 @@ const qem2=document.getElementById("qem2")
 const currentP=document.getElementById("current")
 const opacityChanger=document.getElementById("opacity")
 const qem3=document.getElementById("qem3")
+const bgBar=document.getElementById("bgBar")
 let isDrawing=false
 
 ctx.fillStyle = "black";
@@ -126,6 +127,10 @@ class DetachedBrush extends Tool{
         ctx.fillRect(x, y, this.brushSize, this.brushSize);
         }
     }
+}
+
+class Background{
+    
 }
 
 let defaultBrush=new Brush(10,"black","Default","square")
