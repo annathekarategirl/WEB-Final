@@ -101,19 +101,19 @@ class Brush extends Tool{
         let brush=document.createElement("button")
         brush.textContent=htmlelement
         brushbar.appendChild(brush)
-        brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush);currentP.textContent=this.htmlelement})
+        brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush);currentP.textContent=this.htmlelement;if(currentBrush!=eraser){currentBrush.color=currentColor}})
         ctx.lineCap=this.linecap
     }
 }
 
 class DetachedBrush extends Tool{
-    constructor(brushSize,color,htmlelement,linecap){
-        super(brushSize,color,htmlelement,linecap)
+    constructor(brushSize,color,htmlelement){
+        super(brushSize,color,htmlelement)
         let brush=document.createElement("button")
         brush.textContent=htmlelement
         brushbar.appendChild(brush)
         brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush);currentP.textContent=this.htmlelement;currentBrush.color=currentColor})
-        ctx.lineCap=this.linecap
+        //ctx.lineCap=this.linecap
     }
     drawing(event){
         if(isDrawing){
@@ -121,8 +121,8 @@ class DetachedBrush extends Tool{
         const rect = canvas.getBoundingClientRect();
         let x = event.clientX-rect.left;
         let y = event.clientY-rect.top;
-        ctx.strokeStyle=this.color
-        ctx.lineCap=this.linecap
+        ctx.fillStyle=this.color
+        //ctx.lineCap=this.linecap
         ctx.fillRect(x, y, this.brushSize, this.brushSize);
         }
     }
@@ -133,7 +133,7 @@ let currentBrush=defaultBrush
 currentColor=currentBrush.color
 let eraser=new Brush(10,"white","Eraser","square")
 let roundBrush= new Brush(currentBrush.brushSize,currentColor,"Round","round")
-let detachedBrush= new DetachedBrush(currentBrush.brushSize,currentColor,"Detached","square")
+let detachedBrush= new DetachedBrush(currentBrush.brushSize,currentColor,"Detached")
 
 defaultBrush.changeBrushSize()
 
