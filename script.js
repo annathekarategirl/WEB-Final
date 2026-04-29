@@ -101,10 +101,32 @@ class Brush extends Tool{
     }
 }
 
+class DetachedBrush extends Tool{
+    constructor(brushSize,color,htmlelement,linecap){
+        super(brushSize,color,htmlelement,linecap)
+        let brush=document.createElement("button")
+        brush.textContent=htmlelement
+        brushbar.appendChild(brush)
+        brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush);currentP.textContent=this.htmlelement})
+        ctx.lineCap=this.linecap
+    }
+    drawing(event){
+        if(isDrawing){
+        console.log("works")
+        const rect = canvas.getBoundingClientRect();
+        let x = event.clientX-rect.left;
+        let y = event.clientY-rect.top;
+        ctx.strokeStyle=this.color
+        ctx.lineCap=this.linecap
+        ctx.fillRect(x, y, this.brushSize, this.brushSize);
+        }
+    }
+}
+
 let defaultBrush=new Brush(10,"black","Default","square")
 let currentBrush=defaultBrush
-
 let roundBrush= new Brush(currentBrush.brushSize,currentBrush.color,"Round","round")
+let detachedBrush= new DetachedBrush(10,"black","Detached","square")
 defaultBrush.changeBrushSize()
 
 function mouseLeaveUp(){
@@ -124,3 +146,4 @@ qem1.addEventListener("click",function(){window.alert('Input either HTML support
 qem2.addEventListener("click",function(){window.alert('The numbers are based on pixels, so a size 10 brush is 10 pixels wide and 10 pixels tall.')})
 opacityChanger.addEventListener("change",() => {ctx.globalAlpha=parseFloat(opacityChanger.value)})
 qem3.addEventListener("click",function(){window.alert("Using decimals from 0 to 1, input how much you want the end of your brush to fade. 0 is transparent, 1 is opaque.")})
+
