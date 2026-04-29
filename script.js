@@ -32,6 +32,9 @@ const brushbar=document.getElementById("brushbar")
 const colorInput=document.getElementById("colorinput")
 const qem1=document.getElementById("qem1")
 const qem2=document.getElementById("qem2")
+const currentP=document.getElementById("current")
+const opacityChanger=document.getElementById("opacity")
+const qem3=document.getElementById("qem3")
 let isDrawing=false
 
 ctx.fillStyle = "black";
@@ -66,6 +69,7 @@ class Tool{
         let x = event.clientX-rect.left;
         let y = event.clientY-rect.top;
         ctx.strokeStyle=this.color
+        ctx.lineCap=this.linecap
         //ctx.fillRect(x, y, this.brushSize, this.brushSize);
         
         ctx.lineTo(x,y)
@@ -92,8 +96,8 @@ class Brush extends Tool{
         let brush=document.createElement("button")
         brush.textContent=htmlelement
         brushbar.appendChild(brush)
-        brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush)})
-        ctx.lineCap=linecap
+        brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush);currentP.textContent=this.htmlelement})
+        ctx.lineCap=this.linecap
     }
 }
 
@@ -118,3 +122,5 @@ sizeInput.addEventListener("change",(ev) => {currentBrush.changeBrushSize(ev)})
 colorInput.addEventListener("change",() => {currentBrush.changeColor()})
 qem1.addEventListener("click",function(){window.alert('Input either HTML supported color names or Hex codes! \nFeel free to utilize the preset colors at the bottom.')})
 qem2.addEventListener("click",function(){window.alert('The numbers are based on pixels, so a size 10 brush is 10 pixels wide and 10 pixels tall.')})
+opacityChanger.addEventListener("change",() => {ctx.globalAlpha=parseFloat(opacityChanger.value)})
+qem3.addEventListener("click",function(){window.alert("Using decimals from 0 to 1, input how much you want the end of your brush to fade. 0 is transparent, 1 is opaque.")})
