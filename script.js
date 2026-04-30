@@ -157,7 +157,7 @@ class Background extends masterBG{
     }
     
     drawBG(){
-        ctx.drawImage(this.img,10,10)
+        ctx.drawImage(this.img,10,10,canvas.width,canvas.height)
     }
     repeatBG(){
         console.log("uhh")
@@ -206,7 +206,9 @@ toolbar.appendChild(clearButton)
 clearButton.addEventListener("click",function(){ctx.clearRect(0, 0, canvas.width, canvas.height);})
 
 let RyanBG=new Background("ryanpreset.png")
-
+let VWBG=new Background("vaporwave.png")
+let UnpleGrad=new Background("unpleasantgradient.png")
+let KidNamedFinger= new Background("fingernat.jpg")
 
 canvas.addEventListener("mousemove",(event) => {currentBrush.drawing(event)})
 canvas.addEventListener("mousedown",function(event){isDrawing=true;ctx.beginPath();ctx.moveTo(event.clientX-canvas.getBoundingClientRect().left,event.clientY-canvas.getBoundingClientRect().top)})
@@ -221,3 +223,4 @@ opacityChanger.addEventListener("change",() => {ctx.globalAlpha=parseFloat(opaci
 qem3.addEventListener("click",function(){window.alert("Using decimals from 0 to 1, input how much you want the end of your brush to fade. 0 is transparent, 1 is opaque.")})
 //ryanPreset.addEventListener("click",()=>{RyanBG.drawBG()})
 
+//ADD SOUNDS LIKE IN KIDPIX
