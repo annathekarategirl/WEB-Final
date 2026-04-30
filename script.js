@@ -35,7 +35,9 @@ const qem2=document.getElementById("qem2")
 const currentP=document.getElementById("current")
 const opacityChanger=document.getElementById("opacity")
 const qem3=document.getElementById("qem3")
-const bgBar=document.getElementById("bgBar")
+const bgBar=document.getElementById("bgbar")
+const ryanPreset=document.getElementById("ryanpreset")
+const bgModeBar=document.getElementById("BGmode")
 let isDrawing=false
 
 ctx.fillStyle = "black";
@@ -129,9 +131,59 @@ class DetachedBrush extends Tool{
     }
 }
 
-class Background{
-    
+class masterBG{
+    constructor(){
+        this.mode="draw"
+    }
+    addMode(mode){
+        let modeButton=document.createElement("button")
+        bgModeBar.appendChild(modeButton)
+        modeButton.textContent=mode
+        modeButton.addEventListener("click",()=>{this.mode=mode;console.log(this)})
+    }
 }
+
+class Background extends masterBG{
+    constructor(imgSRC,mode){
+        super(mode)
+        this.imgSRC=imgSRC
+        this.img=document.createElement("img")
+        this.img.src=this.imgSRC
+        this.img.width=100
+        // console.log(img)
+        bgBar.appendChild(this.img)
+        this.img.addEventListener("click",()=>{this.chooseBG()})
+        //this.mode="draw"
+    }
+    
+    drawBG(){
+        ctx.drawImage(this.img,10,10)
+    }
+    repeatBG(){
+        console.log("uhh")
+        for(let i=0;i<100;i++){
+            ctx.drawImage(this.img,i,i)
+        }
+    }
+    chooseBG(){
+        this.mode=modeNode.mode
+        console.log(this.mode)
+        switch(this.mode){
+            
+            case "draw":
+                this.drawBG();
+                break;
+            case "repeat":
+                this.repeatBG();
+        }
+    }
+}
+let modeNode=new masterBG()
+
+
+ 
+modeNode.addMode("draw")
+modeNode.addMode("repeat")
 
 let defaultBrush=new Brush(10,"black","Default","square")
 let currentBrush=defaultBrush
@@ -153,6 +205,8 @@ clearButton.textContent="Clear"
 toolbar.appendChild(clearButton)
 clearButton.addEventListener("click",function(){ctx.clearRect(0, 0, canvas.width, canvas.height);})
 
+let RyanBG=new Background("ryanpreset.png")
+
 
 canvas.addEventListener("mousemove",(event) => {currentBrush.drawing(event)})
 canvas.addEventListener("mousedown",function(event){isDrawing=true;ctx.beginPath();ctx.moveTo(event.clientX-canvas.getBoundingClientRect().left,event.clientY-canvas.getBoundingClientRect().top)})
@@ -165,4 +219,5 @@ qem1.addEventListener("click",function(){window.alert('Input either HTML support
 qem2.addEventListener("click",function(){window.alert('The numbers are based on pixels, so a size 10 brush is 10 pixels wide and 10 pixels tall.')})
 opacityChanger.addEventListener("change",() => {ctx.globalAlpha=parseFloat(opacityChanger.value)})
 qem3.addEventListener("click",function(){window.alert("Using decimals from 0 to 1, input how much you want the end of your brush to fade. 0 is transparent, 1 is opaque.")})
+//ryanPreset.addEventListener("click",()=>{RyanBG.drawBG()})
 
