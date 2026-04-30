@@ -102,7 +102,7 @@ class Brush extends Tool{
         let brush=document.createElement("button")
         brush.textContent=htmlelement
         brushbar.appendChild(brush)
-        brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush);currentP.textContent=this.htmlelement;if(currentBrush!=eraser){currentBrush.color=currentColor}})
+        brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush);currentP.textContent=this.htmlelement;if(currentBrush!=eraser){currentBrush.color=currentColor;currentBrush.brushSize=currentSize}})
         ctx.lineCap=this.linecap
     }
 }
@@ -113,7 +113,7 @@ class DetachedBrush extends Tool{
         let brush=document.createElement("button")
         brush.textContent=htmlelement
         brushbar.appendChild(brush)
-        brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush);currentP.textContent=this.htmlelement;currentBrush.color=currentColor})
+        brush.addEventListener("click",() => {currentBrush=this;console.log(currentBrush);currentP.textContent=this.htmlelement;currentBrush.color=currentColor;})
         //ctx.lineCap=this.linecap
     }
     drawing(event){
@@ -136,6 +136,7 @@ class Background{
 let defaultBrush=new Brush(10,"black","Default","square")
 let currentBrush=defaultBrush
 currentColor=currentBrush.color
+currentSize=currentBrush.size
 let eraser=new Brush(10,"white","Eraser","square")
 let roundBrush= new Brush(currentBrush.brushSize,currentColor,"Round","round")
 let detachedBrush= new DetachedBrush(currentBrush.brushSize,currentColor,"Detached")
