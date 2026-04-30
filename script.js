@@ -165,6 +165,9 @@ class Background extends masterBG{
             ctx.drawImage(this.img,i,i)
         }
     }
+    yuhBG(){
+
+    }
     chooseBG(){
         this.mode=modeNode.mode
         console.log(this.mode)
@@ -175,6 +178,10 @@ class Background extends masterBG{
                 break;
             case "repeat":
                 this.repeatBG();
+                break;
+            case "yuh":
+                this.yuhBG();
+                break;
         }
     }
 }
@@ -184,6 +191,7 @@ let modeNode=new masterBG()
  
 modeNode.addMode("draw")
 modeNode.addMode("repeat")
+modeNode.addMode("yuh")
 
 let defaultBrush=new Brush(10,"black","Default","square")
 let currentBrush=defaultBrush
