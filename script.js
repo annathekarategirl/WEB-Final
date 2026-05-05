@@ -47,6 +47,7 @@ let pipe=new Audio("metalpipe.mp3")
 let augh=new Audio("augh.mp3")
 let frog=new Audio("frog.mp3")
 let sus= new Audio("sus.mp3")
+let marukaite=new Audio("marukaite.mp3")
 
 ctx.fillStyle = "black";
 
@@ -265,4 +266,8 @@ qem4.addEventListener("click",function(){window.alert("Name it the secret code a
 namingInput.addEventListener('change',function(){if (namingInput.value=="Gerita"){window.alert("good job, fellow fujo.");yay.play()};if (namingInput.value=="frog"){window.alert("出現違規異常，了解詳情請按零，由華語客服為您服務。");frog.play()};if (namingInput.value=="heck is a place on earth"){window.alert("");yay.play();frog.play();pipe.play();augh.play();sus.play();boom.play()}})
 //ADD SOUNDS LIKE IN KIDPIX
 
-
+function playmarukaitechikyuuoverandover(){marukaite.play()}
+//playmarukaitechikyuuoverandover()
+marukaite.play()
+setInterval(playmarukaitechikyuuoverandover,156000)
+//make sure setinterval works
