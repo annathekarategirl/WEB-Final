@@ -271,3 +271,4 @@ function playmarukaitechikyuuoverandover(){marukaite.play()}
 marukaite.play()
 setInterval(playmarukaitechikyuuoverandover,156000)
 //make sure setinterval works
+//also make marukaite quieter or vine boom louder
