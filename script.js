@@ -43,6 +43,8 @@ const namingInput=document.getElementById("naming")
 let isDrawing=false
 let boom=new Audio("vineboom.mp3")
 let yay=new Audio("yay.mp3")
+let pipe=new Audio("metalpipe.mp3")
+let augh=new Audio("augh.mp3")
 
 ctx.fillStyle = "black";
 
@@ -93,6 +95,7 @@ class Tool{
         ctx.lineTo(x,y)
         ctx.lineWidth=this.brushSize
         ctx.stroke()
+        pipe.play()
         }
     }
 
@@ -162,7 +165,7 @@ class Background extends masterBG{
         this.img.width=100
         // console.log(img)
         bgBar.appendChild(this.img)
-        this.img.addEventListener("click",()=>{this.chooseBG()})
+        this.img.addEventListener("click",()=>{this.chooseBG();augh.play()})
         //this.mode="draw"
     }
     
