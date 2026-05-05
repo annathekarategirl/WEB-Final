@@ -42,6 +42,12 @@ let isDrawing=false
 
 ctx.fillStyle = "black";
 
+let picker=document.createElement("input")
+bgModeBar.appendChild(picker)
+picker.size="1"
+picker.value="100"
+let inputValue=picker.value
+
 //event listener for mouse down and funciton draw adds event listener for mouse move then mouse up removes event listener
 
 //figure out how to linecap
@@ -161,12 +167,22 @@ class Background extends masterBG{
     }
     repeatBG(){
         console.log("uhh")
-        for(let i=0;i<100;i++){
+        inputValue=picker.value
+        for(let i=0;i<inputValue;i++){
             ctx.drawImage(this.img,i,i)
         }
     }
-    yuhBG(){
-
+    downSmearBG(){
+        inputValue=picker.value
+        for(let i=0;i<inputValue;i++){
+            ctx.drawImage(this.img,10,i)
+        }
+    }
+    fourIinRange(){
+        inputValue=picker.value
+        for(let i=0;i<inputValue;i++){
+            ctx.drawImage(this.img,i,i,i,i)
+        }
     }
     chooseBG(){
         this.mode=modeNode.mode
@@ -179,19 +195,22 @@ class Background extends masterBG{
             case "repeat":
                 this.repeatBG();
                 break;
-            case "yuh":
-                this.yuhBG();
+            case "Downward smear":
+                this.downSmearBG();
                 break;
+            case "fourIinRange":
+                this.fourIinRange();
         }
     }
 }
 let modeNode=new masterBG()
 
 
- 
+ //if you can center everything
 modeNode.addMode("draw")
 modeNode.addMode("repeat")
-modeNode.addMode("yuh")
+modeNode.addMode("Downward smear")
+modeNode.addMode("fourIinRange")
 
 let defaultBrush=new Brush(10,"black","Default","square")
 let currentBrush=defaultBrush
@@ -217,6 +236,7 @@ let RyanBG=new Background("ryanpreset.png")
 let VWBG=new Background("vaporwave.png")
 let UnpleGrad=new Background("unpleasantgradient.png")
 let KidNamedFinger= new Background("fingernat.jpg")
+let cropnat= new Background("cropnat.png")
 
 canvas.addEventListener("mousemove",(event) => {currentBrush.drawing(event)})
 canvas.addEventListener("mousedown",function(event){isDrawing=true;ctx.beginPath();ctx.moveTo(event.clientX-canvas.getBoundingClientRect().left,event.clientY-canvas.getBoundingClientRect().top)})
