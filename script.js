@@ -45,6 +45,8 @@ let boom=new Audio("vineboom.mp3")
 let yay=new Audio("yay.mp3")
 let pipe=new Audio("metalpipe.mp3")
 let augh=new Audio("augh.mp3")
+let frog=new Audio("frog.mp3")
+let sus= new Audio("sus.mp3")
 
 ctx.fillStyle = "black";
 
@@ -260,7 +262,7 @@ opacityChanger.addEventListener("change",() => {ctx.globalAlpha=parseFloat(opaci
 qem3.addEventListener("click",function(){window.alert("Using decimals from 0 to 1, input how much you want the end of your brush to fade. 0 is transparent, 1 is opaque.")})
 //ryanPreset.addEventListener("click",()=>{RyanBG.drawBG()})
 qem4.addEventListener("click",function(){window.alert("Name it the secret code and something great will happen")})
-namingInput.addEventListener('change',function(){if (namingInput.value=="Gerita"){window.alert("good job, fellow fujo.");yay.play()}})
+namingInput.addEventListener('change',function(){if (namingInput.value=="Gerita"){window.alert("good job, fellow fujo.");yay.play()};if (namingInput.value=="frog"){window.alert("出現違規異常，了解詳情請按零，由華語客服為您服務。");frog.play()};if (namingInput.value=="heck is a place on earth"){window.alert("");yay.play();frog.play();pipe.play();augh.play();sus.play();boom.play()}})
 //ADD SOUNDS LIKE IN KIDPIX
 
 
