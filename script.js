@@ -38,7 +38,11 @@ const qem3=document.getElementById("qem3")
 const bgBar=document.getElementById("bgbar")
 const ryanPreset=document.getElementById("ryanpreset")
 const bgModeBar=document.getElementById("BGmode")
+const qem4=document.getElementById("qem4")
+const namingInput=document.getElementById("naming")
 let isDrawing=false
+let boom=new Audio("vineboom.mp3")
+let yay=new Audio("yay.mp3")
 
 ctx.fillStyle = "black";
 
@@ -230,13 +234,15 @@ function mouseLeaveUp(){
 let clearButton= document.createElement("button")
 clearButton.textContent="Clear"
 toolbar.appendChild(clearButton)
-clearButton.addEventListener("click",function(){ctx.clearRect(0, 0, canvas.width, canvas.height);})
+clearButton.addEventListener("click",function(){ctx.clearRect(0, 0, canvas.width, canvas.height);boom.play()})
 
 let RyanBG=new Background("ryanpreset.png")
 let VWBG=new Background("vaporwave.png")
 let UnpleGrad=new Background("unpleasantgradient.png")
 let KidNamedFinger= new Background("fingernat.jpg")
 let cropnat= new Background("cropnat.png")
+
+
 
 canvas.addEventListener("mousemove",(event) => {currentBrush.drawing(event)})
 canvas.addEventListener("mousedown",function(event){isDrawing=true;ctx.beginPath();ctx.moveTo(event.clientX-canvas.getBoundingClientRect().left,event.clientY-canvas.getBoundingClientRect().top)})
@@ -250,5 +256,8 @@ qem2.addEventListener("click",function(){window.alert('The numbers are based on 
 opacityChanger.addEventListener("change",() => {ctx.globalAlpha=parseFloat(opacityChanger.value)})
 qem3.addEventListener("click",function(){window.alert("Using decimals from 0 to 1, input how much you want the end of your brush to fade. 0 is transparent, 1 is opaque.")})
 //ryanPreset.addEventListener("click",()=>{RyanBG.drawBG()})
-
+qem4.addEventListener("click",function(){window.alert("Name it the secret code and something great will happen")})
+namingInput.addEventListener('change',function(){if (namingInput.value=="Gerita"){window.alert("good job, fellow fujo.");yay.play()}})
 //ADD SOUNDS LIKE IN KIDPIX
+
+
