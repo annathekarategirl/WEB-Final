@@ -48,6 +48,7 @@ let augh=new Audio("augh.mp3")
 let frog=new Audio("frog.mp3")
 let sus= new Audio("sus.mp3")
 let marukaite=new Audio("marukaite.mp3")
+marukaite.volume=0.5
 
 ctx.fillStyle = "black";
 
@@ -247,7 +248,8 @@ let VWBG=new Background("vaporwave.png")
 let UnpleGrad=new Background("unpleasantgradient.png")
 let KidNamedFinger= new Background("fingernat.jpg")
 let cropnat= new Background("cropnat.png")
-
+let frogbg=new Background("frog.jpg")
+frogbg.img.addEventListener("click",function(){frog.play()})
 
 
 canvas.addEventListener("mousemove",(event) => {currentBrush.drawing(event)})
@@ -266,9 +268,27 @@ qem4.addEventListener("click",function(){window.alert("Name it the secret code a
 namingInput.addEventListener('change',function(){if (namingInput.value=="Gerita"){window.alert("good job, fellow fujo.");yay.play()};if (namingInput.value=="frog"){window.alert("出現違規異常，了解詳情請按零，由華語客服為您服務。");frog.play()};if (namingInput.value=="heck is a place on earth"){window.alert("");yay.play();frog.play();pipe.play();augh.play();sus.play();boom.play()}})
 //ADD SOUNDS LIKE IN KIDPIX
 
-function playmarukaitechikyuuoverandover(){marukaite.play()}
+//function playmarukaitechikyuuoverandover(){marukaite.play()}
 //playmarukaitechikyuuoverandover()
+function playMarukaite(){
 marukaite.play()
-setInterval(playmarukaitechikyuuoverandover,156000)
+}
+window.addEventListener("load",function(){marukaite.play()})
+
+const stopMusic=document.getElementById("music")
+const musicDiv=document.getElementById("musicDiv")
+stopMusic.addEventListener("click",function(){
+    marukaite.pause()
+    let unMute=document.createElement("button")
+    unMute.textContent="No wait come back"
+    musicDiv.appendChild(unMute)
+    //It's supposed to be able to append as many buttons as possible just to be annoying
+    //Every pause is an overflowing reminder marukaite chikyuu is ALWAYS there.
+    unMute.addEventListener("click",function(){marukaite.play();setInterval(function(){marukaite.play()},156000)})
+    //it only loops if you commit the sin of muting it in the first place, if you were good you only have to listen to it once.
+})
+//setInterval(playmarukaitechikyuuoverandover,156000)
 //make sure setinterval works
 //also make marukaite quieter or vine boom louder
+const htmlth=document.getElementById("html")
+htmlth.addEventListener("click",playMarukaite,{once:true})
