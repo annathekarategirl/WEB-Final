@@ -49,6 +49,7 @@ let frog=new Audio("frog.mp3")
 let sus= new Audio("sus.mp3")
 let marukaite=new Audio("marukaite.mp3")
 marukaite.volume=0.5
+let touchtone=new Audio("telephone.mp3")
 
 ctx.fillStyle = "black";
 
@@ -265,7 +266,7 @@ opacityChanger.addEventListener("change",() => {ctx.globalAlpha=parseFloat(opaci
 qem3.addEventListener("click",function(){window.alert("Using decimals from 0 to 1, input how much you want the end of your brush to fade. 0 is transparent, 1 is opaque.")})
 //ryanPreset.addEventListener("click",()=>{RyanBG.drawBG()})
 qem4.addEventListener("click",function(){window.alert("Name it the secret code and something great will happen")})
-namingInput.addEventListener('change',function(){if (namingInput.value=="Gerita"){window.alert("good job, fellow fujo.");yay.play()};if (namingInput.value=="frog"){window.alert("出現違規異常，了解詳情請按零，由華語客服為您服務。");frog.play()};if (namingInput.value=="heck is a place on earth"){window.alert("");yay.play();frog.play();pipe.play();augh.play();sus.play();boom.play()}})
+namingInput.addEventListener('change',function(){if (namingInput.value=="Gerita"){window.alert("good job, fellow fujo.");yay.play()};if (namingInput.value=="frog"){window.alert("出現違規異常，了解詳情請按零，由華語客服為您服務。");frog.play()};if (namingInput.value=="heck is a place on earth"){window.alert("");yay.play();frog.play();pipe.play();augh.play();sus.play();boom.play()}if (namingInput.value="Touch tone telephone"){touchtone.play()}})
 //ADD SOUNDS LIKE IN KIDPIX
 
 //function playmarukaitechikyuuoverandover(){marukaite.play()}
@@ -279,6 +280,7 @@ const stopMusic=document.getElementById("music")
 const musicDiv=document.getElementById("musicDiv")
 stopMusic.addEventListener("click",function(){
     marukaite.pause()
+    setInterval(function(){sus.play()},30000)
     let unMute=document.createElement("button")
     unMute.textContent="No wait come back"
     musicDiv.appendChild(unMute)
